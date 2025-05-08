@@ -1,0 +1,151 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+:root {
+    --primary-color: #1a1c47;
+    --secondary-color: #f8f9fa;
+    --tertiary-color: #343a40;
+    --quaternary-color: #495057;
+    --background-primary-color: #1a1c47;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.txt-primary {
+    color: var(--primary-color);
+}
+
+.bg-button {
+    background-color: var(--primary-color);
+}
+
+.bg-primary-clr {
+    background-color: var(--primary-color);
+}
+
+.bg-main {
+    background-color: #f7f7f7;
+}
+
+.bg-footer-primary {
+    background-color: var(--background-primary-color);
+}
+
+.swiper {
+    width: 100%;
+    height: 50%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* background: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mySwipers {
+    height: 380px;
+    border-radius: 10px;
+}
+
+.swiper-wrappers {
+    width: 100%;
+    height: 350px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Optional: Toggle effect */
+#sidebar-wrapper {
+    transition: all 0.3s ease;
+    width: 300px;
+}
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -300px;
+}
+
+.zoomable {
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
+}
+
+.zoomable:hover {
+    transform: scale(1.5); /* Atau sesuaikan dengan kebutuhan */
+}
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #25d366;
+}
+
+.scroll-to-top-icon {
+    position: fixed;
+    bottom: 90px; /* agar di atas tombol WhatsApp */
+    right: 30px;
+    z-index: 999;
+    background-color: rgb(41, 40, 40);
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.scroll-to-top-icon:hover {
+    background-color: #343a40;
+    cursor: pointer;
+}
+
+.skeleton {
+    background-color: #e0e0e0;
+    animation: skeleton-loading 1.2s infinite ease-in-out;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: #e0e0e0;
+    }
+    50% {
+        background-color: #f0f0f0;
+    }
+    100% {
+        background-color: #e0e0e0;
+    }
+}
