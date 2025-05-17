@@ -29,7 +29,7 @@ class BannerRequest extends FormRequest
     public function messages()
     {
         return [
-            'image_path.required' => 'Gambar harus diisi',
+            'image_path.required' => 'Gambar tidak boleh kosong',
             'image_path.max' => 'Ukuran gambar maksimal 5MB',
         ];
     }
