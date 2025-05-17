@@ -15,7 +15,8 @@ body {
 }
 
 :root {
-    --primary-color: #1a1c47;
+    /* --primary-color: #1a1c47; */
+    --primary-color: #ff5f2d;
     --secondary-color: #f8f9fa;
     --tertiary-color: #343a40;
     --quaternary-color: #495057;
@@ -28,8 +29,17 @@ body {
     min-height: 100vh;
 }
 
+.btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
 main {
     flex: 1;
+}
+
+.navbar .nav-link:hover {
+    color: var(--primary-color) !important;
 }
 
 .txt-primary {
@@ -37,6 +47,10 @@ main {
 }
 
 .bg-button {
+    background-color: var(--primary-color);
+}
+
+.bg-button:hover {
     background-color: var(--primary-color);
 }
 
@@ -49,7 +63,7 @@ main {
 }
 
 .bg-footer-primary {
-    background-color: var(--background-primary-color);
+    background-color: var(--primary-color);
 }
 
 .swiper {
@@ -67,7 +81,7 @@ main {
 }
 
 .mySwipers {
-    height: 380px;
+    height: 500px;
     border-radius: 10px;
 }
 
@@ -148,4 +162,26 @@ main {
     100% {
         background-color: #e0e0e0;
     }
+}
+
+.no-hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.messages {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title-campaign {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 44px;
 }

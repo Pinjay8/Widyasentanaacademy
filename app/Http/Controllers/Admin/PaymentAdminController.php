@@ -11,14 +11,13 @@ class PaymentAdminController extends Controller
 
     public function index(Request $request)
     {
-        $query = Payment::with('donations')->latest();
+        $query = Payment::with('donations');
 
-        // Filter berdasarkan status jika tersedia
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
-        $payments = $query->get();
+        $payments = $query->orderBy('id', 'desc')->get();
 
         return view('pages.admin.payments.index', compact('payments'));
     }

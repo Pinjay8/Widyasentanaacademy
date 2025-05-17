@@ -28,7 +28,7 @@ class CampaignDonasiAdminRequest extends FormRequest
             'target_amount' => 'required|numeric',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'thumbnail' => 'required|image|max:2048',
+            'thumbnail' => 'required|image|max:5000',
             'status' => 'required|in:aktif,selesai,ditutup',
         ];
     }

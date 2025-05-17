@@ -73,11 +73,11 @@
                         @enderror
                     </div>
                     {{-- @include('auth.message') --}}
-                    <button type="submit" class="btn btn-primary w-100 rounded-3">Daftar</button>
+                    <button type="submit" class="btn bg-button w-100 rounded-3 text-white">{{ __('messages.register') }}</button>
                 </form>
                 <div class="text-center mt-3">
-                    <small>{{ __('messages.register_login') }} <a href="{{ route('login') }}">{{ __('messages.login')
-                            }}</a></small>
+                    <p class="mb-0">{{ __('messages.register_login') }} <a href="{{ route('login') }}" class="txt-primary">{{ __('messages.login')
+                            }}</a></p>
                 </div>
             </div>
         </div>

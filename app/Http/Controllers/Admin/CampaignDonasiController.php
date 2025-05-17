@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CampaignDonasiAdminRequest;
 use App\Models\Campaigns;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -69,9 +70,14 @@ class CampaignDonasiController extends Controller
     {
         $credentials = $request->validated();
 
+        $thumbnailPath = $campaign->thumbnail;
+
         if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail')->store('img', 'public');
-            $credentials['thumbnail'] = $thumbnail;
+            if ($thumbnailPath) {
+                Storage::delete($thumbnailPath);
+            }
+
+            $credentials['thumbnail'] =  $request->file('thumbnail')->store('img', 'public');
         }
 
         $campaign->update($request->only([
@@ -84,17 +90,6 @@ class CampaignDonasiController extends Controller
             'status'
         ]));
 
-        if ($request->hasFile('thumbnail')) {
-            // Hapus thumbnail lama jika ada
-            if ($campaign->thumbnail && Storage::disk('public')->exists($campaign->thumbnail)) {
-                Storage::disk('public')->delete($campaign->thumbnail);
-            }
-
-            // Simpan thumbnail baru
-            $thumbnail = $request->file('thumbnail')->store('img', 'public');
-            $credentials['thumbnail'] = $thumbnail;
-        }
-
         $campaign->update($credentials);
 
         return redirect()->route('campaigns.indexDashboard')->with('success', 'Berhasil memperbarui campaign');
@@ -103,8 +98,9 @@ class CampaignDonasiController extends Controller
     public function destroy($id)
     {
         $campaign = Campaigns::findOrFail($id);
-        $thumbnailPath = $campaign->thumbnail;
-        if ($thumbnailPath) {
+
+        if ($campaign) {
+            $thumbnailPath = $campaign->thumbnail;
             // Hapus file thumbnail dari storage
             Storage::delete($thumbnailPath);
         }

@@ -5,47 +5,13 @@
 @section('content')
 <section>
     <div class="container">
-        {{-- <div class="hero"> --}}
-            {{-- <div class="text-center mt-5  pt-3 shadow-lg p-5 rounded-5" style="background-image: url('assets/img/img_donasi.jpg');
-                height: 380px; background-repeat: no-repeat;
-                background-size: cover;"> --}}
-                {{-- <h1>Welcome to the Home Page</h1>
-                <p>This is a simple Laravel Blade template example.</p>
-                <p>Current date and time: {{ now() }}</p> --}}
-                {{-- <img src="{{ asset('assets/img/img_donasi.jpg') }}" alt="" height="300px"> --}}
-                {{--
-            </div> --}}
-
-            {{-- </div> --}}
         <div class="swiper mySwipers mt-5">
             <div class="swiper-wrapper">
+                @foreach($banners as $banner)
                 <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
+                    <img src="{{ $banner->imagePath() }}" alt="" class="img-fluid object-fit-cover">
                 </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
-                <div class="swiper-slide">
-                    <img src="{{ asset('assets/img/background-placeholder.svg') }}" alt="" class="img-fluid">
-                </div>
+                @endforeach
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -56,7 +22,7 @@
                     <h3>
                         {{ __('messages.subheading_campaign') }}
                     </h3>
-                    <a href="{{ route('donasi') }}" class="btn btn-outline-primary rounded-4 fs-6 ">
+                    <a href="{{ route('donasi') }}" class="btn btn-outline-primary rounded-4 fs-6 no-hover">
                         {{ __('messages.others') }} <i class="bi bi-arrow-right fs-6"></i>
                     </a>
                 </div>
@@ -66,7 +32,8 @@
                         <a href="{{ route('donasi.show', $campaign->slug) }}">
                             @if($campaign->thumbnail != null)
                             <img src="{{ $campaign->thumbnail() }}" alt="Gambar Thumbnail" width="100%"
-                                class="object-fit-cover" style="object-position: center; height: 168px;"
+                                class="object-fit-lg-cover object-fit-contain rounded-top"
+                                style="object-position: center; height: 200px;"
                                 onerror="this.onerror=null; this.src='{{ asset('assets/img/background-placeholder.svg') }}';">
                             @else
                             <img src="{{ asset('assets/img/background-placeholder.svg') }}" class="img-fluid"
@@ -74,8 +41,8 @@
                             @endif
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $campaign->title }}</h5>
-                            <h6 class="fw-normal text-primary fw-bold">
+                            <h6 class="card-title title-campaign">{{ $campaign->title }}</h6>
+                            <h6 class="fw-normal txt-primary fw-bold" style="height: 20px;">
                                 Rp. {{ number_format($campaign->collected_amount, 0, ',', '.') }}
                                 <span class="text-black fw-normal fs-6">{{ __('messages.collected') }}</span>
                                 <span class="fs-6 fw-normal text-black">
@@ -86,22 +53,32 @@
                             $percentage = $campaign->target_amount > 0
                             ? ($campaign->collected_amount / $campaign->target_amount) * 100
                             : 0;
+                            $percentage = round($percentage);
                             @endphp
 
                             <div class="progress my-3" style="height: 14px;">
-                                <div class="progress-bar bg-primary" role="progressbar"
+                                <div class="progress-bar bg-button" role="progressbar"
                                     style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
                                     aria-valuemin="0" aria-valuemax="100">
-                                    {{ $percentage }} %
+                                    {{ $percentage }}%
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 @if($campaign->is_active)
+                                {{-- Campaign sedang berlangsung --}}
                                 <a href="{{ route('campaign.index', ['slug' => $campaign->slug]) }}"
-                                    class="btn btn-primary text-white">{{ __('messages.donated') }}</a>
-                                <p class="mb-0 fw-medium">{{ $campaign->label }}</p>
+                                    class="btn bg-button text-white">{{ __('messages.donated') }}</a>
+                                <p class="mb-0 fw-medium text-">{{ $campaign->label }}</p>
+
+                                @elseif(Str::startsWith($campaign->label, __('messages.upcoming')))
+                                {{-- Campaign belum dimulai --}}
+                                <button class="btn btn-warning text-white" disabled>Belum Dimulai</button>
+                                <p class="mb-0 fw-medium text-warning">{{ $campaign->label }}</p>
+
                                 @else
+                                {{-- Campaign sudah selesai --}}
                                 <button class="btn btn-success" disabled>Sudah Selesai</button>
+                                <p class="mb-0 fw-medium text-muted">{{ $campaign->label }}</p>
                                 @endif
 
                             </div>
@@ -122,23 +99,19 @@
 
                 <div class="col-md-3 d-flex align-items-center flex-column justify-content-center">
                     <i class="bi bi-search fs-1 mb-3"></i>
-                    <h4>{{ __('messages.why_choose_us_1') }}</h4>
-                    <p></p>
+                    <h4 class="text-center">{{ __('messages.why_choose_us_1') }}</h4>
                 </div>
                 <div class="col-md-3 d-flex align-items-center flex-column justify-content-center">
                     <i class="bi bi-bullseye fs-1 mb-3"></i>
-                    <h4>{{ __('messages.why_choose_us_2') }}</h4>
-                    <p></p>
+                    <h4 class="text-center">{{ __('messages.why_choose_us_2') }}</h4>
                 </div>
                 <div class="col-md-3 d-flex align-items-center flex-column justify-content-center">
                     <i class="bi bi-heart fs-1 mb-3"></i>
-                    <h4>{{ __('messages.why_choose_us_3') }}</h4>
-                    <p></p>
+                    <h4 class="text-center">{{ __('messages.why_choose_us_3') }}</h4>
                 </div>
                 <div class="col-md-3 d-flex align-items-center flex-column justify-content-center">
                     <i class="bi bi-hand-index fs-1 mb-3"></i>
-                    <h4>{{ __('messages.why_choose_us_4') }}</h4>
-                    <p></p>
+                    <h4 class="text-center">{{ __('messages.why_choose_us_4') }}</h4>
                 </div>
             </div>
         </div>
@@ -149,8 +122,9 @@
             <div class="swiper-wrapper">
                 @foreach ($donations as $donation)
                 <div class="swiper-slide mt-3">
-                    <div class="card rounded-4 h-100 p-lg-3 border-0 shadow-sm" style="background-color: #fffcfc;">
-                        <div class="card-body ">
+                    <div class="card rounded-4 h-100 p-lg-3 border-0 shadow-sm"
+                        style="background-color: #fffcfc; display: flex; flex-direction: column;">
+                        <div class="card-body d-flex flex-column" style="flex-grow: 1;">
                             <div class="d-flex gap-3 align-items-start">
                                 <img src="{{ asset('assets/img/icon-profile.png') }}" alt=""
                                     style="width: 50px; height: 50px;" class="rounded-circle">
@@ -172,16 +146,11 @@
                             <p class="card-text mb-0">
                                 <strong>Rp {{ number_format($donation->amount, 0, ',', '.') }}</strong>
                             </p>
-                            <h6 class="card-subtitle mb-2 mt-2">{{ $donation->campaigns->title }}</h6>
-                            <p style="
-                            display: -webkit-box;
-                            -webkit-line-clamp: 2;
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        ">
-                                {{ $donation->messages }}
+                            <h6 class="card-subtitle mb-2 mt-2 title-campaign">{{ $donation->campaigns->title }}</h6>
+                            <p class="message">
+                                {{ $donation->messages ?? '-' }}
                             </p>
+                            <div class="mt-auto"></div> <!-- Ensures content is pushed to the bottom of the card -->
                         </div>
                     </div>
                 </div>
@@ -193,7 +162,7 @@
     <div class="container mt-3 mb-5">
         <h3>{{ __('messages.faq') }}</h3>
         <h5 class="fw-normal mb-3">{{ __('messages.sub_faq') }}</h5>
-        <div class="accordion" id="accordionExample">
+        <div class="accordion shadow-sm rounded" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

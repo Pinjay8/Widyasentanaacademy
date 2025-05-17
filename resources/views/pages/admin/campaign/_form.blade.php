@@ -8,7 +8,8 @@
 
 <div class="mb-3">
     <label for="description" class="form-label">Deskripsi</label>
-    <textarea name="description" class="form-control">{{ old('description', $campaign->description ?? '') }}</textarea>
+    <textarea name="description" id="editor"
+        class="form-control">{{ old('description', $campaign->description ?? '') }}</textarea>
     @error('description')
     <div class="text-danger mt-1">{{ $message }}</div>
     @enderror
@@ -68,3 +69,4 @@
 </div>
 
 <button type="submit" class="btn btn-primary">{{ $button }}</button>
+

@@ -40,15 +40,16 @@
                                     <th class="fw-medium">Tanggal Selesai</th>
                                     <th class="fw-medium">Gambar</th>
                                     <th class="fw-medium">Status</th>
-                                    <th class="fw-medium">Aksi</th>
+                                    <th class="fw-medium" style="width: 10%">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($campaigns->isNotEmpty())
                                 @forelse($campaigns as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
                                     <td>{{ $data->title }}</td>
-                                    <td>{{ $data->description }}</td>
+                                    <td>{!! $data->description !!}</td>
                                     <td>Rp. {{ number_format($data->target_amount, 0, ',', '.') }}</td>
                                     <td>Rp. {{ number_format($data->collected_amount, 0, ',', '.') }}</td>
                                     <td>{{ $data->start_date }}</td>
@@ -64,20 +65,22 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('campaigns.edit', $data->id) }}"
-                                            class="btn btn-warning btn-sm text-white px-3 py-2">Edit</a>
-                                        <form action="{{ route('campaigns.destroy', $data->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="btn btn-sm btn-danger mt-2 mt-lg-0 px-3 py-2">Hapus</button>
-                                        </form>
+                                        <div class="d-flex align-items-center gap-2 h-100">
+                                            <a href="{{ route('campaigns.edit', $data->id) }}"
+                                                class="btn btn-warning btn-sm text-white px-3 py-2">Edit</a>
+                                            <form action="{{ route('campaigns.destroy', $data->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-danger mt-2 mt-lg-0 px-3 py-2">Hapus</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
-                                @empty
-                                <td colspan="12">Tidak ada data yang tersedia.</td>
-                                @endforelse
+                                @endforeach
+                                @else
+                                @endif
                             </tbody>
                         </table>
                     </div>

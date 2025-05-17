@@ -14,3 +14,14 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+  $('#editor').summernote({
+    tabsize: 2,
+        height: 100
+  });
+});
+</script>
+@endpush

@@ -13,13 +13,14 @@ class UserDashboardController extends Controller
     //
     public function index()
     {
-        $donations = Donation::where('user_id', Auth::guard('user')->id())->latest()->get();
+        $donations = Donation::where('user_id', Auth::guard('user')->id())->latest()->take(5)->get();
         $countDonations = Donation::where('user_id', Auth::guard('user')->id())->count();
         $payments = Payment::whereHas('donations', function ($query) {
             $query->where('user_id', Auth::guard('user')->id());
         })
             ->with('donations') // opsional, agar eager load
             ->latest()
+            ->take(5)
             ->get();
 
         // Total donasi dan pembayaran

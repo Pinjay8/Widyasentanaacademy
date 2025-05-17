@@ -24,7 +24,7 @@ class PaymentUserController extends Controller
             $query->where('user_id', Auth::guard('user')->id());
         })
             ->with('donations') // opsional, agar eager load
-            ->latest()
+            ->orderBy('created_at', 'desc')
             ->get();
         return view('pages.user.payment.index', compact('payments'));
     }
@@ -68,7 +68,7 @@ class PaymentUserController extends Controller
         // Kirim email ke admin
         Mail::raw($emailBody, function ($message) use ($userEmail, $userName) {
             $message->from($userEmail, $userName); // email donatur
-            $message->to('alvincennanda@gmail.com'); // email admin
+            $message->to('widyasentana.academy@gmail.com'); // email admin
             $message->subject('✅ Konfirmasi Pembayaran Donasi');
             $message->replyTo($userEmail, $userName);
         });

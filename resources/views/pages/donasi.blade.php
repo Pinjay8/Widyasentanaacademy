@@ -26,22 +26,30 @@
                     __('messages.sort_highest') }}</option>
                 <option value="lowest" {{ request('filter')=='lowest' ? 'selected' : '' }}>{{ __('messages.sort_lowest')
                     }}</option>
+                <option value="still_active" {{ request('filter')=='still_active' ? 'selected' : '' }}>{{
+                    __('messages.sort_still_active')
+                    }}</option>
+                </option>
+                <option value="finished" {{ request('filter')=='finished' ? 'selected' : '' }}>{{
+                    __('messages.sort_finished')
+                    }}</option>
+                ></option>
             </select>
         </div>
         <div class="col-lg-2">
-            <button type="submit" class="btn btn-primary w-100">{{ __('messages.filter') }}</button>
+            <button type="submit" class="btn bg-button w-100 text-white">{{ __('messages.filter') }}</button>
         </div>
     </form>
 
     {{-- Campaign Cards --}}
     <div class="row g-4">
         @forelse ($campaigns as $campaign)
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3  p-1">
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4  p-1">
             <div class="card shadow-sm rounded-3 h-100 d-flex flex-column p-0">
                 <a href="{{ route('donasi.show', $campaign->slug) }}">
                     @if($campaign->thumbnail != null)
                     <img src="{{ $campaign->thumbnail() }}" alt="Gambar Thumbnail" width="100%"
-                        class="object-fit-contain" style="object-fit: contain; object-position: center; height: 168px;"
+                        class=" object-fit-cover rounded-top" style="object-position: center; height: 150px;"
                         onerror="this.onerror=null; this.src='{{ asset('assets/img/background-placeholder.svg') }}';">
                     @else
                     <img src="{{ asset('assets/img/background-placeholder.svg') }}" class="img-fluid"
@@ -49,14 +57,8 @@
                     @endif
                 </a>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ $campaign->title }}</h5>
-
-                    {{-- Deskripsi: Batasi tinggi dan overflow --}}
-                    {{-- <p class="card-text text-justify flex-grow-1" style="max-height: 70px; overflow: hidden;">
-                        {{ $campaign->description }}
-                    </p> --}}
-
-                    <h6 class="fw-normal text-primary fw-bold py-1" style="font-size: 15px;">
+                    <h6 class="card-title title-campaign mb-0">{{ $campaign->title }}</h6>
+                    <h6 class="fw-normal txt-primary fw-bold" style="font-size: 15px;">
                         Rp. {{ number_format($campaign->collected_amount, 0, ',', '.') }}
                         <span class="text-black fw-normal">{{ __('messages.collected') }}</span>
                         <span class="fs-6 fw-medium text-black">
@@ -68,11 +70,13 @@
                     $percentage = $campaign->target_amount > 0
                     ? ($campaign->collected_amount / $campaign->target_amount) * 100
                     : 0;
+                    $percentage = round($percentage);
                     @endphp
-                    <div class="progress my-3" style="height: 14px;">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $percentage }}%;"
+
+                    <div class="progress my-1">
+                        <div class="progress-bar bg-button" role="progressbar" style="width: {{ $percentage }}%;"
                             aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100">
-                            {{ number_format($percentage, 0) }} %
+                            {{ $percentage }}%
                         </div>
                     </div>
                 </div>
@@ -86,7 +90,7 @@
                     @if (!$isExpired) --}}
                     @if($campaign->is_active)
                     <a href="{{ route('campaign.index', ['slug' => $campaign->slug]) }}"
-                        class="btn btn-primary text-white">{{ __('messages.donated') }}</a>
+                        class="btn bg-button text-white">{{ __('messages.donated') }}</a>
                     @else
                     <button class="btn btn-success" disabled>Sudah Selesai</button>
                     @endif

@@ -25,7 +25,8 @@
                                     <option value="">Semua Status</option>
                                     <option value="pending" {{ request('status')=='pending' ? 'selected' : '' }}>Pending
                                     </option>
-                                    <option value="success" {{ request('status')=='success' ? 'selected' : '' }}>Berhasil
+                                    <option value="success" {{ request('status')=='success' ? 'selected' : '' }}>
+                                        Berhasil
                                     </option>
                                 </select>
                             </div>
@@ -48,6 +49,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($payments->empty())
+                                @else
                                 @forelse($payments as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
@@ -108,6 +111,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        @endif
                         @include('pages.admin.payments.modals')
                     </div>
                 </div>

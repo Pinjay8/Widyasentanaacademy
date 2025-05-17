@@ -22,11 +22,12 @@ return [
     'accordion_2' => 'Bagaimana cara mendaftar di Widya Sentana Academy?',
     'accordion_2_desc' => 'Anda dapat mendaftar melalui situs web kami dengan mengisi formulir pendaftaran dan mengikuti langkah-langkah yang diberikan.',
     'accordion_3' => 'Bagaimana cara menghubungi kami?',
-    'accordion_3_desc' => 'Hubungi nomor melalui wa 0851578290122',
+    'accordion_3_desc' => 'Bisa menghubungi kami melalui email: widyasentana.academy@gmail.com',
 
     'last_day' => 'Hari Terakhir',
     'days' => 'hari',
     'finished' => 'Sudah Selesai',
+    'upcoming' => 'Akan Datang',
 
     'sub_heading_footer' => 'Widya Sentana Academy adalah platform penggalangan dana online yang aman dan terpercaya
                     untuk membantu
@@ -43,18 +44,22 @@ return [
     'sort_oldest' => 'Terlama',
     'sort_highest' => 'Tertinggi',
     'sort_lowest' => 'Terendah',
+    'sort_still_active' => 'Berlangsung',
+    'sort_finished' => 'Selesai',
 
     // Login Page
     'login_title' => 'Masuk ke akun anda',
     'email_placeholder' => 'Masukkan alamat email anda',
     'password_placeholder' => 'Masukkan kata sandi anda',
     'login_register' => 'Belum punya akun?',
+    'register_name' => 'Nama',
     'register_title' => 'Buat akun baru',
     'register_number' => 'Nomor Telepon',
     'register_number_placeholder' => 'Masukkan nomor telepon anda',
     'register_name_placeholder' => 'Masukkan nama lengkap anda',
     'register_email_placeholder' => 'Masukkan alamat email anda',
     'register_password_placeholder' => 'Masukkan kata sandi anda',
+    'register_confirm_password' => 'Konfirmasi Kata Sandi',
     'register_confirm_password_placeholder' => 'Konfirmasi kata sandi anda',
     'register_login' => 'Sudah punya akun?',
 
@@ -69,6 +74,8 @@ return [
 
     'logout' => 'Keluar',
     'payment' => 'Pembayaran',
+
+    'donation_to_payment' => 'Lanjutkan ke Pembayaran',
 
 
     'name_campaign' => 'Nama Campaign',
@@ -88,5 +95,51 @@ return [
     'donor_name' => 'Nama Pendonasi',
     'support' => 'Kata Dukungan',
     'proof_payment' => 'Bukti Pembayaran',
-    'action' => 'Aksi'
+    'action' => 'Aksi',
+
+    'not_found' => 'Halaman tidak ditemukan',
+    'not_found_desc' => 'Halaman yang anda cari tidak ditemukan. Silahkan kembali ke halaman utama atau hubungi kami jika anda membutuhkan bantuan lebih lanjut.',
+    'not_found_back' => 'Kembali ke Beranda',
+
+    'copy' => 'Salin',
+
+    'completed_payment' => 'Selesaikan Pembayaran',
+    'upload_history_payment' => 'Upload Bukti Pembayaran',
+    'how_to_payment' => 'Cara Pembayaran',
+    'account_number' => 'Nomor Rekening',
+    'payment_deadline' => 'Batas Waktu Pembayaran',
+
+    'qris_step_1' => 'Buka Aplikasi Gopay/OVO/Shopeepay/LinkAja/DANA atau lainnya',
+    'qris_step_2' => 'Pilih Scan pada menu aplikasi anda',
+    'qris_step_3' => 'Lakukan Scan pada Barcode diatas',
+    'qris_step_4' => 'Masukkan Nominal sesuai dengan yang tertera diatas',
+    'qris_step_5' => 'Pilih Bayar dan masukkan pin Anda',
+    'qris_step_6' => 'Tunggu hingga proses pembayaran berhasil',
+    'qris_step_7' => 'Transaksi Anda akan otomatis terkonfirmasi di sistem',
+
+    'bank_bpd_step_1' => 'Masukkan kartu ATM BPD Bali & PIN.',
+    'bank_bpd_step_2' => 'Pilih menu "Transaksi Lainnya".',
+    'bank_bpd_step_3' => 'Pilih menu "Transfer".',
+    'bank_bpd_step_4' => 'Pilih rekening Bank BPD Bali',
+    'bank_bpd_step_5' => 'Masukkan nomor rekening tujuan.',
+    'bank_bpd_step_6' => 'Masukkan jumlah uang yang ingin dibayarkan.',
+    'bank_bpd_step_7' => 'Akan muncul layar konfirmasi, tekan YA jika sudah benar.',
+    'bank_bpd_step_8' => 'Pembayaran selesai.',
+
+    'bank_bri_step_1' => 'Masukkan kartu ATM BRI & PIN.',
+    'bank_bri_step_2' => 'Pilih "Transaksi Lain" dan pilih "Pembayaran".',
+    'bank_bri_step_3' => 'Pilih menu "Transfer".',
+    'bank_bri_step_4' => 'Pilih rekening Bank BRI',
+    'bank_bri_step_5' => 'Masukkan nomor rekening tujuan.',
+    'bank_bri_step_6' => 'Masukkan jumlah uang yang ingin dibayarkan.',
+    'bank_bri_step_7' => 'Akan muncul layar konfirmasi, tekan YA jika sudah benar.',
+
+    'bank_bri_mbanking_step_1' => 'Buka aplikasi BRI Mobile Banking.',
+    'bank_bri_mbanking_step_2' => 'Pilih menu "Transfer".',
+    'bank_bri_mbanking_step_3' => 'Pilih "Transfer ke Rekening BRI".',
+    'bank_bri_mbanking_step_4' => 'Masukkan nomor rekening tujuan.',
+    'bank_bri_mbanking_step_5' => 'Masukkan jumlah uang yang ingin dibayarkan.',
+    'bank_bri_mbanking_step_6' => 'Akan muncul layar konfirmasi, tekan YA jika sudah benar.',
+
+
 ];

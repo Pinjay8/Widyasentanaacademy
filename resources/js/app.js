@@ -8,7 +8,7 @@ import "bootstrap";
 // import "swiper/css/pagination";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const swiper = new Swiper(".mySwiper", {
+    new Swiper(".mySwiper", {
         loop: true,
         slidesPerView: 3,
         spaceBetween: 10,
@@ -43,17 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    const sessionAlert = document.getElementById("session-alert");
-    if (sessionAlert) {
-        const message = sessionAlert.dataset.success;
-        Swal.fire({
-            title: "Berhasil!",
-            text: message,
-            icon: "success",
-            confirmButtonText: "OK",
-        });
-    }
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    if (!scrollToTopBtn) return; // Jika elemen tidak ada, stop eksekusi
+
     window.addEventListener("scroll", () => {
         if (window.scrollY > 100) {
             scrollToTopBtn.style.display = "block";

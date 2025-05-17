@@ -37,6 +37,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($donations->isEmpty())
+                                @else
                                 @forelse($donations as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
@@ -44,15 +46,17 @@
                                     <td>{{ $data->user->name }}</td>
                                     <td>Rp. {{ number_format($data->amount, 0, ',', '.') }}</td>
                                     <td>
-                                        @if($data->payment_method == "BCA")
-                                        <img src="{{ asset('assets/img/bca.png') }}" alt="" width="80px" height="40px">
+                                        @if($data->payment_method == "BPD BALI")
+                                        <img src="{{ asset('assets/img/bank-bpd-bali.png') }}"
+                                            alt="Gambar Bank BPD Bali" width="80px" height="40px">
                                         @elseif($data->payment_method == "BRI")
-                                        <img src="{{ asset('assets/img/bri.png') }}" alt="" width="80px" height="40px">
+                                        <img src="{{ asset('assets/img/bri.png') }}" alt="Gambar BRI" width="80px"
+                                            height="40px">
                                         @elseif($data->payment_method == "BNI")
                                         <img src="{{ asset('assets/img/bni.png') }}" alt="" width="80px" height="40px">
                                         @elseif($data->payment_method == "Qris")
-                                        <img src="{{ asset('assets/img/logo_qris.png') }}" alt="" width="80px"
-                                            height="40px">
+                                        <img src="{{ asset('assets/img/logo_qris.png') }}" alt="Gambar Qris"
+                                            width="80px" height="40px">
                                         @endif
                                     </td>
                                     <td>{{ $data->messages }}</td>
@@ -78,15 +82,15 @@
                                         </span>
                                         @endif
                                     </td>
-
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="7">Tidak ada data yang tersedia.</td>
+                                    <td colspan="8">Tidak ada data yang tersedia.</td>
                                 </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>

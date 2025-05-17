@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CampaignDonasiController;
 use App\Http\Controllers\Admin\DonasiAdminController;
 use App\Http\Controllers\Admin\PaymentAdminController;
@@ -55,23 +56,13 @@ Route::group(
 
 
         Route::middleware(['CheckLogin'])->group(function () {
-
-            // Route::middleware(['', CheckLogin::class])->prefix('user')->name('user.')->group(function () {
-            //     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
-            //     // route lain khusus user
-            // });
-
-            // // Group untuk ADMIN
-            // Route::middleware(['', CheckLogin::class])->prefix('admin')->name('admin.')->group(function () {
-            //     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-            //     // route lain khusus admin
-            // });
-
             Route::get('/campaign/{slug}', [CampaignDonasiController::class, 'index'])->name('campaign.index');
             Route::post('/campaign/donasi', [DonasiUserController::class, 'store'])->name('campaign.store');
             Route::resource('payments', PaymentUserController::class);
             Route::get('/payments/{id}', [PaymentUserController::class, 'show'])->name('payments.showForm');
             Route::post('/payments/store', [PaymentUserController::class, 'store'])->name('payments.store');
+
+
 
             Route::middleware("IsUser")->group(function () {
                 Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
@@ -80,6 +71,7 @@ Route::group(
             });
 
             Route::middleware(["IsAdmin"])->prefix('admin')->group(function () {
+                Route::resource('banners', BannerController::class);
                 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
                 Route::get('/campaigns', [CampaignDonasiController::class, 'indexDashboard'])->name('campaigns.indexDashboard');
                 Route::get('/campaigns/create', [CampaignDonasiController::class, 'create'])->name('campaigns.create');

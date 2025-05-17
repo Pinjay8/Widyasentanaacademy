@@ -29,11 +29,12 @@ return [
     'accordion_2' => 'How to register at Widya Sentana Academy?',
     'accordion_2_desc' => 'You can register through our website by filling out the registration form and following the steps provided.',
     'accordion_3' => 'How to contact us?',
-    'accordion_3_desc' => 'Contact us via WhatsApp at 0851578290122',
+    'accordion_3_desc' => 'Contact us via Email: widyasentana.academy@gmail.com',
 
     'last_day' => 'Last Day',
     'days' => 'days',
     'finished' => 'Finished',
+    'upcoming' => 'Upcoming',
 
     'sub_heading_footer' => 'Widya Sentana Academy is a safe and trusted online fundraising platform dedicated to helping those in need.',
     'follow_us' => 'Follow Us',
@@ -48,6 +49,8 @@ return [
     'sort_oldest' => 'Oldest',
     'sort_highest' => 'Target Highest',
     'sort_lowest' => 'Target Lowest',
+    'sort_still_active' => 'Still Active',
+    'sort_finished' => 'Finished',
 
 
     // Login Page
@@ -77,6 +80,8 @@ return [
     'logout' => 'Logout',
     'payment' => 'Payment',
 
+    'donation_to_payment' => 'Continue to Payment',
+
     'name_campaign' => 'Name Campaign',
     'total_donate' => 'Total Donations',
     'amount_donate' => 'Amount of Donations',
@@ -94,5 +99,53 @@ return [
     'donor_name' => 'Donor Name',
     'support' => 'Support',
     'proof_payment' => 'Proof Payment',
-    'action' => 'Action'
+    'action' => 'Action',
+
+    'not_found' => 'Not Found',
+    'not_found_desc' => '
+    Sorry, the page you are looking for could not be found.
+    ',
+    'not_found_back' => 'Back to Home',
+
+    'copy' => 'Copy',
+
+    'completed_payment' => 'Complete Payment',
+    'upload_history_payment' => 'Upload Payment History',
+    'how_to_payment' => 'How to Payment',
+    'account_number' => 'Account Number',
+    'payment_deadline' => 'Payment Deadline',
+
+    'qris_step_1' => 'Open the Gopay/OVO/Shopeepay/LinkAja/DANA or other e-wallet application',
+    'qris_step_2' => 'Select the "Scan QR" menu',
+    'qris_step_3' => 'Scan the QR code displayed on the screen',
+    'qris_step_4' => 'Enter the amount you want to donate',
+    'qris_step_5' => 'Click "Pay" or "Confirm"',
+    'qris_step_6' => 'Enter your PIN or password to complete the transaction',
+    'qris_step_7' => 'You will receive a notification of successful payment',
+
+    'bank_bpd_step_1'  => 'Insert your BPD Bali ATM card and enter your PIN.',
+    'bank_bpd_step_2'  => 'Select other transactions.',
+    'bank_bpd_step_3'  => 'Choose the transfer menu.',
+    'bank_bpd_step_4'  => 'Select "Bank BPD Bali".',
+    'bank_bpd_step_5'  => 'Enter the destination account number.',
+    'bank_bpd_step_6'  => 'Enter the amount you want to donate.',
+    'bank_bpd_step_7'  => 'A confirmation screen will appear — press YES if the information is correct',
+    'bank_bpd_step_8'  => 'Confirm the transaction details.',
+
+    'bank_bri_step_1'  => 'Insert your BRI ATM card and enter your PIN.',
+    'bank_bri_step_2'  => 'Select "Other Transactions" and then "Payment".',
+    'bank_bri_step_3'  => 'Select the transfer menu.',
+    'bank_bri_step_4'  => 'Select "Bank BRI".',
+    'bank_bri_step_5'  => 'Enter the destination account number.',
+    'bank_bri_step_6'  => 'Enter the amount you want to donate.',
+    'bank_bri_step_7'  => 'A confirmation screen will appear — press YES if the information is correct',
+
+    'bank_bri_mbanking_step_1'  => 'Open the BRI Mobile Banking application.',
+    'bank_bri_mbanking_step_2'  => 'Select the transfer menu.',
+    'bank_bri_mbanking_step_3'  => 'Select "Transfer to BRI Account".',
+    'bank_bri_mbanking_step_4'  => 'Enter the destination account number.',
+    'bank_bri_mbanking_step_5'  => 'Enter the amount you want to donate.',
+    'bank_bri_mbanking_step_6'  => 'A confirmation screen will appear — press YES if the information is correct',
+    'bank_bri_mbanking_step_7'  => 'Confirm the transaction details.',
+
 ];

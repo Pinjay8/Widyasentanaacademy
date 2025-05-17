@@ -14,11 +14,11 @@
         <div class="collapse navbar-collapse" id="navbarMain">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pe-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('/') ? 'active fw-semibold' : '' }} text-primary "
+                    <a class="nav-link {{ request()->is('/') ? 'active fw-semibold' : '' }} txt-primary "
                         href="{{ route('home') }}">{{ __('messages.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('campaign-donasi') ? 'active fw-semibold' : '' }} text-primary"
+                    <a class="nav-link {{ request()->is('campaign-donasi') ? 'active fw-semibold' : '' }} txt-primary"
                         href="{{ route('donasi') }}">{{ __('messages.donate') }}</a>
                 </li>
                 @auth
@@ -29,9 +29,9 @@
             </ul>
 
             <!-- Dropdown untuk Pilihan Bahasa -->
-            <ul class="navbar-nav mb-lg-0 mb-2">
+            <ul class="navbar-nav mb-lg-0 mb-2 d-flex align-items-center">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle mt-2" href="#" role="button" data-bs-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle mt-lg-0" href="#" role="button" data-bs-toggle="dropdown">
                         <img src="{{ asset('images/flags/' . app()->getLocale() . '.png') }}"
                             alt="{{ app()->getLocale() }} flag" width="20" height="14">
                         {{ strtoupper(app()->getLocale()) }}
@@ -80,11 +80,13 @@
                 @else
                 <div class="d-flex gap-1">
                     <li class="nav-item">
-                        <a class="btn btn-outline-primary me-1" href="{{ route('indexLogin') }}">{{ __('messages.login')
+                        <a class="btn btn-outline-primary me-1 no-hover" href="{{ route('indexLogin') }}">{{
+                            __('messages.login')
                             }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ route('indexRegister') }}">{{ __('messages.register') }}</a>
+                        <a class="btn bg-button text-white" href="{{ route('indexRegister') }}">{{
+                            __('messages.register') }}</a>
                     </li>
                 </div>
                 @endif

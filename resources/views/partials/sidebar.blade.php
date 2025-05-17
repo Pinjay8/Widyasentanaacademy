@@ -8,16 +8,19 @@
         <a href="{{ route('admin.dashboard') }}" class="list-group-item list-group-item-action bg-dark text-white p-3">
             <i class="bi bi-house-door me-2"></i> Dashboard
         </a>
+        <a href="{{ route('banners.index') }}" class="list-group-item list-group-item-action bg-dark text-white p-3">
+            <i class="bi bi bi-signpost-fill me-2"></i> Banners
+        </a>
         <a href="{{ route('campaigns.indexDashboard') }}"
             class="list-group-item list-group-item-action bg-dark text-white p-3">
             <i class="bi bi-bullseye me-2"></i> Campaign
         </a>
         <a href="{{ route('donations.index') }}" class="list-group-item list-group-item-action bg-dark text-white p-3">
-            <i class="bi bi-cash me-2"></i> Donasi
+            <i class="bi bi-cash me-2"></i>{{ __('messages.donate') }}
         </a>
         <a href="{{ route('paymentsadmin.index') }}"
             class="list-group-item list-group-item-action bg-dark text-white p-3">
-            <i class="bi bi-wallet me-2"></i>Pembayaran
+            <i class="bi bi-wallet me-2"></i>{{ __('messages.payment') }}
         </a>
         @endif
         @if(Auth::guard('user')->check())

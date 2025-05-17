@@ -17,9 +17,9 @@
         @yield('content')
     </main>
     <x-footer />
-    <a href="https://wa.me/6281234567890" target="_blank" class="whatsapp-icon">
+    {{-- <a href="#" target="_blank" class="whatsapp-icon">
         <i class="bi bi-whatsapp" style="font-size: 40px; color: white;"></i>
-    </a>
+    </a> --}}
     <a href="#" class="scroll-to-top-icon" id="scrollToTopBtn" style="display: none;">
         <i class="bi bi-arrow-up-short" style="font-size: 30px; color: white;"></i>
     </a>

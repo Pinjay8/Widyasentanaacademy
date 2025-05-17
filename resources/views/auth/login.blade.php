@@ -31,10 +31,11 @@
                             </button>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 rounded-3">Login</button>
+                    <button type="submit" class="btn bg-button w-100 rounded-3 text-white">{{ __('messages.login')
+                        }}</button>
                 </form>
                 <div class="text-center mt-3">
-                    {{ __('messages.login_register') }} <a href="{{ route('indexRegister') }}">{{
+                    {{ __('messages.login_register') }} <a href="{{ route('indexRegister') }}" class="txt-primary">{{
                         __('messages.register') }}</a>
 
                 </div>

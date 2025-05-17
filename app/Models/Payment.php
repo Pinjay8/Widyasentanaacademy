@@ -19,18 +19,4 @@ class Payment extends Model
     {
         return $this->belongsTo(Donation::class, 'donation_id');
     }
-
-    // public function getStatusAttribute($value)
-    // {
-    //     return $value === 'pending' ? 'Pending' : ($value === 'success' ? 'Success' : 'Failed');
-    // }
-
-    // public function getPaymentDateAttribute($value)
-    // {
-    //     return \Carbon\Carbon::parse($value)->format('d-m-Y');
-    // }
-    // public function getExpiresAtAttribute($value)
-    // {
-    //     return \Carbon\Carbon::parse($value)->format('d-m-Y H:i:s');
-    // }
 }

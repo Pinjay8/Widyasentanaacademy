@@ -23,6 +23,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
+
                         <table id="add-row" class="table table-striped table-hover overflow-x-hidden">
                             <thead>
                                 <tr>
@@ -36,6 +37,8 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if($donations->empty())
+                                @else
                                 @forelse($donations as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
@@ -43,8 +46,9 @@
                                     <td>{{ $data->user->name ?? '-' }}</td>
                                     <td>Rp. {{ number_format($data->amount, 0, ',', '.') }}</td>
                                     <td>
-                                        @if($data->payment_method == "BCA")
-                                        <img src="{{ asset('assets/img/bca.png') }}" alt="" width="80px" height="40px">
+                                        @if($data->payment_method == "BPD BALI")
+                                        <img src="{{ asset('assets/img/bank-bpd-bali.png') }}" alt="" width="80px"
+                                            height="40px">
                                         @elseif($data->payment_method == "BRI")
                                         <img src="{{ asset('assets/img/bri.png') }}" alt="" width="80px" height="40px">
                                         @elseif($data->payment_method == "BNI")
@@ -79,11 +83,12 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="7">Tidak ada data yang tersedia.</td>
+                                    <td colspan="7" class="text-center">Tidak ada data donasi</td>
                                 </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>
