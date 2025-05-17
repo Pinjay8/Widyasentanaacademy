@@ -22,7 +22,7 @@ class BannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:5000',
+            'image_path' => 'required|max:5000',
         ];
     }
 
@@ -30,8 +30,6 @@ class BannerRequest extends FormRequest
     {
         return [
             'image_path.required' => 'Gambar harus diisi',
-            'image_path.image' => 'File yang diunggah harus berupa gambar',
-            'image_path.mimes' => 'Format gambar yang diperbolehkan: jpeg, png, jpg, gif',
             'image_path.max' => 'Ukuran gambar maksimal 5MB',
         ];
     }
