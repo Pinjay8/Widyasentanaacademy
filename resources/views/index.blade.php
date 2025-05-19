@@ -5,11 +5,11 @@
 @section('content')
 <section>
     <div class="container">
-        <div class="swiper mySwipers mt-5">
+        <div class="swiper mySwipers mt-lg-5 vh-lg-100 vh-50">
             <div class="swiper-wrapper">
                 @foreach($banners as $banner)
                 <div class="swiper-slide">
-                    <img src="{{ $banner->imagePath() }}" alt="" class="img-fluid object-fit-cover">
+                    <img src="{{ $banner->imagePath() }}" alt="" class="object-fit-contain object-center rounded">
                 </div>
                 @endforeach
             </div>
@@ -32,7 +32,7 @@
                         <a href="{{ route('donasi.show', $campaign->slug) }}">
                             @if($campaign->thumbnail != null)
                             <img src="{{ $campaign->thumbnail() }}" alt="Gambar Thumbnail" width="100%"
-                                class="object-fit-lg-cover object-fit-contain rounded-top"
+                                class="object-fit-cover rounded-top"
                                 style="object-position: center; height: 200px;"
                                 onerror="this.onerror=null; this.src='{{ asset('assets/img/background-placeholder.svg') }}';">
                             @else

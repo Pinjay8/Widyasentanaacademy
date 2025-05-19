@@ -80,6 +80,18 @@ main {
     align-items: center;
 }
 
+@media only screen and (max-width: 768px) {
+    .mySwipers {
+        height: 300px !important;
+        border-radius: 10px;
+    }
+
+    .swiper-slide {
+        width: 100%;
+        height: 200px;
+    }
+}
+
 .mySwipers {
     height: 500px;
     border-radius: 10px;
