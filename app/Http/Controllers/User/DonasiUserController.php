@@ -33,7 +33,7 @@ class DonasiUserController extends Controller
 
         $donation = Donation::create([
             'campaign_id' => $request->campaign_id,
-            'user_id' =>  Auth::guard('user')->id(),
+            'user_id' => Auth::guard('user')->id() ?? Auth::guard('admin')->id(),
             'amount' => $request->amount,
             'payment_method' => $request->payment_method,
             'messages' => $request->messages,

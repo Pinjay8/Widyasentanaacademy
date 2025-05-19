@@ -40,8 +40,8 @@ class CampaignDonasiController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file('thumbnail')->store('img', 'public');
-            $credentials['thumbnail'] = $thumbnail;
         }
+        
         Campaigns::create([
             'admin_id' => auth('admin')->id(),
             'slug' => str()->slug($credentials['title']),
@@ -79,16 +79,6 @@ class CampaignDonasiController extends Controller
 
             $credentials['thumbnail'] =  $request->file('thumbnail')->store('img', 'public');
         }
-
-        $campaign->update($request->only([
-            'title',
-            'description',
-            'target_amount',
-            'start_date',
-            'end_date',
-            'thumbnail',
-            'status'
-        ]));
 
         $campaign->update($credentials);
 

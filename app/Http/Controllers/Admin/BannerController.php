@@ -30,9 +30,7 @@ class BannerController extends Controller
             $credentials['image_path'] = $image;
         }
 
-        Banner::create([
-            'image_path' => $credentials['image_path'] ?? null,
-        ]);
+        Banner::create($credentials);
 
         return redirect()->route('banners.index')->with('success', 'Berhasil menambahkan banner');
     }

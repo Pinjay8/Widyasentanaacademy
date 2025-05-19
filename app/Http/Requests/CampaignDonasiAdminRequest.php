@@ -42,6 +42,8 @@ class CampaignDonasiAdminRequest extends FormRequest
             'start_date.required' => 'Tanggal mulai harus diisi',
             'end_date.required' => 'Tanggal akhir harus diisi',
             'thumbnail.required' => 'Thumbnail harus diisi',
+            'thumbnail.image' => 'Thumbnail harus berupa gambar',
+            'thumbnail.max' => 'Ukuran thumbnail maksimal 5MB',
             'status.required' => 'Status harus diisi',
         ];
     }

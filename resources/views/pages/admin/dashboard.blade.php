@@ -39,12 +39,12 @@
     </div>
 
     <!-- Recent Campaigns Table -->
-    <div class="card">
+    <div class="card overflow-auto">
         <div class="card-header">
             <h5 class="card-title mb-0">Campaign Terbaru</h5>
         </div>
         <div class="card-body">
-            <table class="table table-striped">
+            <table class="table table-striped w-100 overflow-hidden">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -60,7 +60,7 @@
                     <tr>
                         <td>{{ $campaign->id }}</td>
                         <td>{{ $campaign->title }}</td>
-                        <td>{{ Str::limit($campaign->description, 50) }}</td>
+                        <td>{!! Str::limit($campaign->description, 50) !!}</td>
                         <td>{{ \Carbon\Carbon::parse($campaign->start_date)->format('d-m-Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($campaign->end_date)->format('d-m-Y') }}</td>
                         <td>
@@ -83,7 +83,7 @@
     </div>
 
     <!-- Chart Donasi Per Bulan -->
-    <div class="card mt-4">
+    <div class="card mt-4 overflow-hidden">
         <div class="card-header">
             <h5 class="card-title mb-0">Donasi Per Bulan</h5>
         </div>

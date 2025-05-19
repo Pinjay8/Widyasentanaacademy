@@ -7,7 +7,7 @@
     <div class="row justify-content-center ">
         <div class="col-md-6 shadow-md rounded-4 p-4 bg-white">
             <div class="d-flex gap-3 mb-4">
-                <img src="{{ asset('assets/img/img_donasi.jpg') }}" alt="" width="100" height="100">
+                <img src="{{ $campaigns->thumbnail() }}" alt="" width="165" height="120" class="rounded">
                 <div class="d-flex flex-column">
                     <h4 class="text-start">{{ $campaigns->title }}</h4>
                     <h5 class="d-block">Widya Sentana <i class="bi bi-patch-check-fill ms-1"
