@@ -32,7 +32,7 @@ return [
     'sub_heading_footer' => 'Widya Sentana Academy adalah platform penggalangan dana online yang aman dan terpercaya
                     untuk membantu
                     mereka yang membutuhkan.',
-    'follow_us' => 'Ikuti Kami',
+    'follow_us' => 'Informasi Kontak',
 
     'login' => 'Masuk',
     'register' => 'Daftar',

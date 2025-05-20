@@ -37,7 +37,7 @@ return [
     'upcoming' => 'Upcoming',
 
     'sub_heading_footer' => 'Widya Sentana Academy is a safe and trusted online fundraising platform dedicated to helping those in need.',
-    'follow_us' => 'Follow Us',
+    'follow_us' => 'Contact Information',
 
     'login' => 'Login',
     'register' => 'Register',

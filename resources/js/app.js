@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
             el: ".swiper-pagination",
             clickable: true,
         },
-
         breakpoints: {
             0: {
                 slidesPerView: 1,
@@ -38,6 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
     new Swiper(".mySwipers", {
         loop: true,
         slidesPerView: 1,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         pagination: {
             el: ".swiper-pagination",
         },

@@ -32,8 +32,7 @@
                         <a href="{{ route('donasi.show', $campaign->slug) }}">
                             @if($campaign->thumbnail != null)
                             <img src="{{ $campaign->thumbnail() }}" alt="Gambar Thumbnail" width="100%"
-                                class="object-fit-cover rounded-top"
-                                style="object-position: center; height: 200px;"
+                                class="object-fit-cover rounded-top" style="object-position: center; height: 200px;"
                                 onerror="this.onerror=null; this.src='{{ asset('assets/img/background-placeholder.svg') }}';">
                             @else
                             <img src="{{ asset('assets/img/background-placeholder.svg') }}" class="img-fluid"
@@ -53,7 +52,7 @@
                             $percentage = $campaign->target_amount > 0
                             ? ($campaign->collected_amount / $campaign->target_amount) * 100
                             : 0;
-                            $percentage = round($percentage);
+                            $percentage = $percentage > 0 ? max(1, round($percentage)) : 0;
                             @endphp
 
                             <div class="progress my-3" style="height: 14px;">

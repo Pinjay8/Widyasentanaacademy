@@ -70,7 +70,7 @@
                     $percentage = $campaign->target_amount > 0
                     ? ($campaign->collected_amount / $campaign->target_amount) * 100
                     : 0;
-                    $percentage = round($percentage);
+                    $percentage = $percentage > 0 ? max(1, round($percentage)) : 0;
                     @endphp
 
                     <div class="progress my-1">
