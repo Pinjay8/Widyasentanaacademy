@@ -37,8 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($payments->isEmpty())
-                                @else
+                                @if($payments->isNotEmpty())
                                 @forelse($payments as $data)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -93,9 +92,11 @@
                                     <td colspan="8">Tidak ada data yang tersedia.</td>
                                 </tr>
                                 @endforelse
+                                @else
+                                @endif
                             </tbody>
                         </table>
-                        @endif
+
                         @include('pages.admin.payments.modals')
                     </div>
                 </div>

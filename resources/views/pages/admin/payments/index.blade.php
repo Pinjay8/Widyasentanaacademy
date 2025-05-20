@@ -49,8 +49,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($payments->empty())
-                                @else
+                                @if($payments->isNotEmpty())
                                 @forelse($payments as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
@@ -109,9 +108,13 @@
                                     <td colspan="8" class="text-center">Tidak ada data yang tersedia.</td>
                                 </tr>
                                 @endforelse
+                                @else
+                                {{-- <tr>
+                                    <td colspan="8" class="text-center">Tidak ada data yang tersedia.</td>
+                                </tr> --}}
+                                @endif
                             </tbody>
                         </table>
-                        @endif
                         @include('pages.admin.payments.modals')
                     </div>
                 </div>

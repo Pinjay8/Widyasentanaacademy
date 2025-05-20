@@ -37,8 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($donations->empty())
-                                @else
+                                @if($donations->isNotEmpty())
                                 @forelse($donations as $data)
                                 <tr>
                                     <td>{{ $data->id }}</td>
@@ -86,9 +85,14 @@
                                     <td colspan="7" class="text-center">Tidak ada data donasi</td>
                                 </tr>
                                 @endforelse
+                                @else
+                                {{-- <tr>
+                                    <td colspan="7" class="text-center">Tidak ada data donasi</td>
+                                </tr> --}}
+                                @endif
                             </tbody>
+                            {{-- @endif --}}
                         </table>
-                        @endif
                     </div>
                 </div>
             </div>
